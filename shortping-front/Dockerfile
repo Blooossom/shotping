@@ -20,7 +20,6 @@ FROM nginx:alpine
 
 # 7. Nginx의 기본 HTML 폴더에 빌드된 파일을 복사
 COPY --from=build /app/dist /usr/share/nginx/html
-COPY ./default.conf /etc/nginx/conf.d
 
 # 9. Nginx 컨테이너가 실행될 때 포트 노출
 EXPOSE 80
