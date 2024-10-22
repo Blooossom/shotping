@@ -21,8 +21,7 @@ jobs:
 
       - name: Build Backend Docker image
         run: |
-          cd backend
-          docker build . -t blooossom/shortping:latest
+          docker build -t blooossom/shortping:latest .
 
       - name: Push Backend Docker image
         run: |
