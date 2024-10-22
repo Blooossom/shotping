@@ -14,7 +14,7 @@ public class User {
 
     @Id
     @Column(name = "user_seq")
-    private String useSeq;
+    private String userSeq;
 
     @Column(name = "user_id")
     private String userId;
