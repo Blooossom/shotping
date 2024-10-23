@@ -6,11 +6,9 @@ import blooossom.shortping.entity.User;
 import blooossom.shortping.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin("*")
 @RequiredArgsConstructor
 @RequestMapping(value = "/api/user", produces = Const.API_PRODUCES_JSON)
 @RestController
@@ -27,7 +25,7 @@ public class UserApiController {
     public ResponseEntity<?> login(@RequestBody UserDto.LoginRequest loginRequest) {
         User user = userService.login(loginRequest);
         if (user == null) {
-            return ResponseEntity.ok("\"Invalid username or password\"");
+            return ResponseEntity.ok("회원 정보를 찾을 수 없거나 비밀번호를 잘못 입력하였습니다.");
         } else {
             return ResponseEntity.ok(user);
         }
