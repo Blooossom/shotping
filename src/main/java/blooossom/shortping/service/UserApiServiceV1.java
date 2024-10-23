@@ -2,6 +2,8 @@ package blooossom.shortping.service;
 
 import blooossom.shortping.dto.UserDto;
 import blooossom.shortping.entity.User;
+import blooossom.shortping.exception.UserErrorCode;
+import blooossom.shortping.exception.UserException;
 import blooossom.shortping.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -30,8 +32,23 @@ public class UserApiServiceV1 implements UserService{
     }
 
     @Override
-    public User login(String userId, String password) {
-        return null;
+    public User login(UserDto.LoginRequest loginRequest) {
+        try {
+            User user = userRepository.findByUserId(loginRequest.getUserId())
+                    .orElseThrow(() -> new UserException(UserErrorCode.USER_NOT_FOUND_EXCEPTION));
+
+            if (!user.getPassword().equals(loginRequest.getPassword())) {
+                throw new UserException(UserErrorCode.PASSWORD_NOT_CORRECT_EXCEPTION);
+            } else {
+                return user;
+            }
+        } catch (UserException e) {
+            log.warn(e.getMessage());
+            return null;
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return null;
+        }
     }
 
     @Override

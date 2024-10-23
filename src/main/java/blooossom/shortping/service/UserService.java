@@ -5,7 +5,7 @@ import blooossom.shortping.entity.User;
 
 public interface UserService {
     void register(UserDto.SignUpRequest signUpRequest);
-    User login(String userId, String password);
+    User login(UserDto.LoginRequest loginRequest);
     void logout(String userId);
     User findUserById(String userId);
 }
