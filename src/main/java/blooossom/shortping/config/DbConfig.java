@@ -53,7 +53,7 @@ public class DbConfig {
         dataSource.setJdbcUrl(jdbcUrl);
         dataSource.setUsername(username);
         dataSource.setPassword(password);
-        dataSource.setSchema(schema);
+        dataSource.setSchema(Const.SCHEMA);
         return dataSource;
     }
 
