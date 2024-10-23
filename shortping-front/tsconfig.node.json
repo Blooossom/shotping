@@ -18,14 +18,5 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": [
-    "src/**/*",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.svg",
-    "./types",
-    "public/assets/*",
-    "node_modules/@types/node/globals.d.ts",
-    "**/.env",
-  ]
+  "include": ["vite.config.ts"]
 }

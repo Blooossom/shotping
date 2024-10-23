@@ -1,5 +1,5 @@
 # Build 단계
-FROM gradle:8.10.2-jdk17-alpine AS build
+FROM gradle:7.5.1-jdk17 AS build
 WORKDIR /app
 
 # 애플리케이션 소스 복사
