@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'SCDream';
+    src: url(../font/SCDream/SCDream-Thin.otf) format('opentype');
+    font-weight: 100;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SCDream';
+    src: url(../font/SCDream/SCDream-ExtraLight.otf) format('opentype');
+    font-weight: 200;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SCDream';
+    src: url(../font/SCDream/SCDream-Light.otf) format('opentype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SCDream';
+    src: url(../font/SCDream/SCDream-Regular.otf) format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SCDream';
+    src: url(../font/SCDream/SCDream-Medium.otf) format('opentype');
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SCDream';
+    src: url(../font/SCDream/SCDream-SemiBold.otf) format('opentype');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SCDream';
+    src: url(../font/SCDream/SCDream-Bold.otf) format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SCDream';
+    src: url(../font/SCDream/SCDream-ExtraBold.otf) format('opentype');
+    font-weight: 800;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SCDream';
+    src: url(../font/SCDream/SCDream-Black.otf) format('opentype');
+    font-weight: 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Tenada';
+    src: url(../font/Tenada.ttf) format("truetype");
+    font-weight: 500;
+    font-style: normal;
+}
