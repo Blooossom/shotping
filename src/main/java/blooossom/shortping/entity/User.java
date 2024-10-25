@@ -1,5 +1,6 @@
 package blooossom.shortping.entity;
 
+import blooossom.shortping.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -42,4 +43,13 @@ public class User {
 
     @Column(name = "birth")
     private String birth;
+
+    @Setter
+    @Column(name = "cash")
+    private Integer cash;
+
+    @Setter
+    @Enumerated(EnumType.STRING)
+    @Column(name = "user_role")
+    private UserRole userRole;
 }
