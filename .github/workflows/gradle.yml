@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - develop
 
 jobs:
   build-backend:
@@ -21,11 +22,19 @@ jobs:
 
       - name: Build Backend Docker image
         run: |
-          docker build -t blooossom/shortping:latest .
+          TAG=latest
+          if [[ "${GITHUB_REF##*/}" == "develop" ]]; then
+            TAG=dev
+          fi
+          docker build -t blooossom/shortping:$TAG .
 
       - name: Push Backend Docker image
         run: |
-          docker push blooossom/shortping:latest
+          TAG=latest
+          if [[ "${GITHUB_REF##*/}" == "develop" ]]; then
+            TAG=dev
+          fi
+          docker push blooossom/shortping:$TAG
 
   build-frontend:
     runs-on: ubuntu-latest
@@ -43,8 +52,16 @@ jobs:
       - name: Build Frontend Docker image
         run: |
           cd shortping-front
-          docker build . -t blooossom/shortping-front:latest
+          TAG=latest
+          if [[ "${GITHUB_REF##*/}" == "develop" ]]; then
+            TAG=dev
+          fi
+          docker build . -t blooossom/shortping-front:$TAG
 
       - name: Push Frontend Docker image
         run: |
-          docker push blooossom/shortping-front:latest
+          TAG=latest
+          if [[ "${GITHUB_REF##*/}" == "develop" ]]; then
+            TAG=dev
+          fi
+          docker push blooossom/shortping-front:$TAG
