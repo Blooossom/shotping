@@ -23,11 +23,13 @@ public class UserApiServiceV1 implements UserService{
 
     @Transactional
     @Override
-    public void register(UserDto.SignUpRequest signUpRequest) {
+    public boolean register(UserDto.SignUpRequest signUpRequest) {
         try {
             userRepository.saveAndFlush(UserDto.SignUpRequest.toEntity(signUpRequest, generateUniqueHash()));
+            return true;
         } catch (Exception e) {
             log.error(e.getMessage());
+            return false;
         }
     }
 
