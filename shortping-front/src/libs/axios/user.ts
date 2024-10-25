@@ -1,10 +1,14 @@
-import { Login, SignUp } from "../../types/user.type.ts";
+import {Login, SignUp} from "../../types/user.type.ts";
 import axios from "axios";
 import Apis from "../../data/Api.ts";
 
 export const signUp = async (signUp: SignUp) => {
   try {
     const response = await axios.post(Apis.USER.signUp, signUp);
+
+    if (response.data === true) {
+      location.href = "/login";
+    }
   } catch (error) {
     console.log(error);
   }

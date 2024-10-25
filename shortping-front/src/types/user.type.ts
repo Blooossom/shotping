@@ -1,5 +1,5 @@
-export type SignUp = {
-  userSeq: string;
+export type User = {
+  userSeq: string | null;
   userId: string;
   password: string;
   userName: string;
@@ -11,7 +11,6 @@ export type SignUp = {
   birth: string;
 };
 
-export type Login = {
-  userId: string;
-  password: string;
-};
+export type SignUp = Omit<User, "userSeq">;
+
+export type Login = Pick<User, "userId" | "password">;
