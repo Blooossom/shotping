@@ -63,6 +63,22 @@ public class UserApiServiceV1 implements UserService{
         return null;
     }
 
+    @Override
+    public boolean chargeCash(String userId, Integer cash) {
+        try {
+            User user = userRepository.findByUserId(userId)
+                    .orElseThrow(() -> new UserException(UserErrorCode.USER_NOT_FOUND_EXCEPTION));
+
+            user.setCash(cash);
+
+            userRepository.saveAndFlush(user);
+
+            return true;
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return false;
+        }
+    }
 
 
     // 무작위 해시값 생성 메서드
