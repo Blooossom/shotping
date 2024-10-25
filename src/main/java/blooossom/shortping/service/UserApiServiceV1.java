@@ -2,6 +2,7 @@ package blooossom.shortping.service;
 
 import blooossom.shortping.dto.UserDto;
 import blooossom.shortping.entity.User;
+import blooossom.shortping.enums.UserRole;
 import blooossom.shortping.exception.UserErrorCode;
 import blooossom.shortping.exception.UserException;
 import blooossom.shortping.repository.UserRepository;
@@ -63,6 +64,19 @@ public class UserApiServiceV1 implements UserService{
         return userRepository.findByUserId(userId).orElseThrow(() -> new UserException(UserErrorCode.USER_NOT_FOUND_EXCEPTION));
     }
 
+    @Override
+    public boolean changeUserRole(String userId, UserRole userRoleValue) {
+        try {
+            User user = userRepository.findByUserId(userId)
+                    .orElseThrow(() -> new UserException(UserErrorCode.USER_NOT_FOUND_EXCEPTION));
+
+            user.setUserRole(userRoleValue);
+            userRepository.saveAndFlush(user);
+            return true;
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            return false;
+        }
     }
 
     @Override
