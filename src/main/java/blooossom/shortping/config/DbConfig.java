@@ -53,7 +53,7 @@ public class DbConfig {
         dataSource.setJdbcUrl(jdbcUrl);
         dataSource.setUsername(username);
         dataSource.setPassword(password);
-        dataSource.setSchema(schema);
+        dataSource.setSchema(Const.SCHEMA);
         return dataSource;
     }
 
@@ -62,7 +62,7 @@ public class DbConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(@Qualifier("ds") DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource);
-        em.setPackagesToScan("blooossom.portfolio.entity");
+        em.setPackagesToScan("blooossom.shortping.entity");
         em.setJpaProperties(getProperties());
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         return em;
