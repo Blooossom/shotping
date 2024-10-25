@@ -17,8 +17,8 @@ public class UserApiController {
     private final UserService userService;
 
     @PostMapping(value = "/register", consumes = Const.API_CONSUMES_JSON)
-    public void register(@RequestBody UserDto.SignUpRequest user) {
-        userService.register(user);
+    public ResponseEntity<Boolean> register(@RequestBody UserDto.SignUpRequest user) {
+        return ResponseEntity.ok(userService.register(user));
     }
 
     @PostMapping(value = "/login", consumes = Const.API_CONSUMES_JSON)
