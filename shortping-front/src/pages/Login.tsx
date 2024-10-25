@@ -1,8 +1,9 @@
-import {ReactElement, useState} from "react";
-import {css} from "@emotion/css";
-import {useForm,} from "react-hook-form";
+import { ReactElement, useState } from "react";
+import { css } from "@emotion/css";
+import { useForm } from "react-hook-form";
 import useLoginMutation from "../libs/query/useLoginMutation.ts";
-import {Login} from "../types/user.type.ts";
+import { Login } from "../types/user.type.ts";
+import SignUp from "./SignUp.tsx";
 
 const Frame = css`
   display: grid;
@@ -29,7 +30,6 @@ const Body = css`
   font-size: 32px;
   font-weight: 500;
   align-items: center;
-  justify-content: center;
 `;
 
 const Form = css`
@@ -43,6 +43,14 @@ const LoginButton = css`
   height: 48px;
   border: 1px solid #000;
   border-radius: 12px;
+`;
+
+const Label = css`
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 interface FormValues {
@@ -74,19 +82,39 @@ const Login = (): ReactElement => {
       <section className={Header}>Shortping</section>
       <form onSubmit={handleSubmit(onSubmit)}>
         <section className={Body}>
-          <input
-            className={Form}
-            placeholder={"아이디를 입력해주세요."}
-            {...register("loginReq.userId", { required: true })}
-          />
-          <input
-            type={"password"}
-            className={Form}
-            placeholder={"비밀번호를 입력해주세요."}
-            {...register("loginReq.password")}
-          />
+          <div
+            className={css`
+              display: flex;
+              flex-direction: column;
+              gap: 30px;
+            `}
+          >
+            <label className={Label}>
+              <span className={css``}>아이디</span>
+              <input
+                className={Form}
+                placeholder={"아이디를 입력해주세요."}
+                {...register("loginReq.userId", { required: true })}
+              />
+            </label>
+            <label className={Label}>
+              <span>비밀번호</span>
+              <input
+                type={"password"}
+                className={Form}
+                placeholder={"비밀번호를 입력해주세요."}
+                {...register("loginReq.password")}
+              />
+            </label>
+          </div>
           <button className={LoginButton} type="submit">
             로그인
+          </button>
+          <button
+            className={LoginButton}
+            onClick={() => (location.href = "/signUp")}
+          >
+            회원가입
           </button>
         </section>
       </form>
