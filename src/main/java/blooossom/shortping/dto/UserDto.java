@@ -2,6 +2,7 @@ package blooossom.shortping.dto;
 
 import blooossom.shortping.config.Const;
 import blooossom.shortping.entity.User;
+import blooossom.shortping.enums.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -45,6 +46,8 @@ public class UserDto {
                     .addressDetail(signUpRequest.getAddressDetail())
                     .gender(signUpRequest.getGender())
                     .birth(signUpRequest.getBirth())
+                    .cash(0)
+                    .userRole(UserRole.USER)
                     .build();
         }
     }
