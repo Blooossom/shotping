@@ -60,7 +60,9 @@ public class UserApiServiceV1 implements UserService{
 
     @Override
     public User findUserById(String userId) {
-        return null;
+        return userRepository.findByUserId(userId).orElseThrow(() -> new UserException(UserErrorCode.USER_NOT_FOUND_EXCEPTION));
+    }
+
     }
 
     @Override
