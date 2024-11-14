@@ -118,6 +118,7 @@ const SignUp = (): ReactElement => {
               <label className={Label}>
                 <span className={css``}>비밀번호</span>
                 <input
+                  type={"password"}
                   className={Form}
                   placeholder={"비밀번호를 입력해주세요."}
                   {...register("signUpRequest.password", { required: true })}
