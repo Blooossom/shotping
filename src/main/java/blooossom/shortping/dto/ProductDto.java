@@ -7,6 +7,7 @@ public class ProductDto {
 
     @Data
     public static class UpdateProductRequest {
+        private String productId;
 
         private String productName;
 

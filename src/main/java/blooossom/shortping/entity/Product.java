@@ -1,5 +1,6 @@
 package blooossom.shortping.entity;
 
+import blooossom.shortping.dto.ProductDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,4 +37,15 @@ public class Product {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_seq")
+    private User user;
+
+    public void updateProductInfo(ProductDto.UpdateProductRequest request) {
+        this.productName = request.getProductName();
+        this.amount = request.getAmount();
+        this.price = request.getPrice();
+        this.description = request.getDescription();
+    }
 }

@@ -49,8 +49,24 @@ public class ProductApiServiceV1 implements ProductService{
         }
     }
 
+    @Transactional
     @Override
-    public boolean updateProduct(Product product, User user) {
-        return false;
+    public boolean updateProduct(ProductDto.UpdateProductRequest request, User user) {
+        try {
+            Product origin = productRepository.findByProductId(request.getProductId())
+                    .orElseThrow(() -> new ProductException(ProductErrorCode.PRODUCT_NOT_FOUND_EXCEPTION));
+
+            if (!user.getUserId().equals(origin.getSellerId())) {
+                throw new ProductException(ProductErrorCode.PRODUCT_UNAUTHORIZED_EXCEPTION);
+            }
+
+            origin.updateProductInfo(request);
+
+            productRepository.save(origin);
+            return true;
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+            return false;
+        }
     }
 }

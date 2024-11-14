@@ -1,5 +1,6 @@
 package blooossom.shortping.service;
 
+import blooossom.shortping.dto.ProductDto;
 import blooossom.shortping.entity.Product;
 import blooossom.shortping.entity.User;
 
@@ -15,5 +16,5 @@ public interface ProductService {
 
     boolean deleteProduct(String productId, User user);
 
-    boolean updateProduct(Product product, User user);
+    boolean updateProduct(ProductDto.UpdateProductRequest request, User user);
 }
